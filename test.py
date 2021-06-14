@@ -56,5 +56,10 @@ class TestRange(TestCase):
         except:
             self.assertTrue(False, "Numero incorrecto")
 
+    def test_parameter_not_numbers(self,):
+        parameter = "(5,5)"
+        a = Range(parameter)
+        self.assertTrue(True)
+
 if __name__ == "__main__":
     main()

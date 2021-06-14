@@ -7,7 +7,7 @@ class Range:
         if text[0] != "(" and text[0] != "[":
             raise OpenCharError("")
 
-        if text[0] != "]" and text[0] != ")":
+        if text[-1] != "]" and text[-1] != ")":
             raise CloseCharError("")
 
         self.initial_char = text[0]
@@ -25,7 +25,7 @@ class Range:
 
         p_clean = self.validate_initial_begin_chars(p_trim)
 
-        values = p_clean.strip(self.separator)
+        values = p_clean.split(self.separator)
         if len(values) == 1:
             raise SeparatorError("")
 
@@ -33,9 +33,7 @@ class Range:
             self.a = int(values[0])
             self.b = int(values[1])
         except:
-            raise NotNumbersError("")
-        
-
-        
-
-        
+            raise NotNumbersError()
+    
+    def __str__(self,):
+        return f'{self.initial_char} {self.a}, {self.b} {self.final_char}'
